@@ -78,28 +78,6 @@ resource "azurerm_key_vault_access_policy" "vault" {
   ]
 }
 
-resource "azurerm_key_vault_access_policy" "vms" {
-  key_vault_id = azurerm_key_vault.vault.id
-
-  tenant_id = azurerm_disk_encryption_set.vault.identity[0].tenant_id
-  object_id = azurerm_disk_encryption_set.vault.identity[0].principal_id
-
-  key_permissions = [
-    "Create",
-    "Delete",
-    "Get",
-    "Encrypt",
-    "WrapKey",
-    "UnwrapKey",
-    "Purge",
-    "Recover",
-    "Update",
-    "List",
-    "Decrypt",
-    "Sign",
-  ]
-}
-
 resource "azurerm_disk_encryption_set" "vault" {
   name                = "vault"
   resource_group_name = data.azurerm_resource_group.credifyai.name
