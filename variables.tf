@@ -5,7 +5,3 @@ variable "prefix" {
 variable "admin_username" {
   default = "vault"
 }
-
-# variable "admin_password" {
-#   default = "VaultPassword!@#"
-# }
