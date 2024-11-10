@@ -2,7 +2,7 @@ data "azurerm_client_config" "current" {
 }
 
 resource "azurerm_key_vault" "vault" {
-  name                        = "credifyai-vault"
+  name                        = "credifyaivault"
   location                    = data.azurerm_resource_group.credifyai.location
   resource_group_name         = data.azurerm_resource_group.credifyai.name
   enabled_for_disk_encryption = true
