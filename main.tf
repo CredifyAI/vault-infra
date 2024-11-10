@@ -1,5 +1,5 @@
 data "azurerm_resource_group" "credifyai" {
-  name = "credifyai-resources"
+  name = "${var.prefix}-vault"
 }
 
 resource "tls_private_key" "ssh_key" {
@@ -108,7 +108,7 @@ resource "azurerm_linux_virtual_machine" "vault" {
   resource_group_name   = data.azurerm_resource_group.credifyai.name
   location              = data.azurerm_resource_group.credifyai.location
   network_interface_ids = [azurerm_network_interface.vault.id]
-  size                  = "Standard_DS1_v2"
+  size                  = "Standard_B1s"
   admin_username        = var.admin_username
   source_image_reference {
     publisher = "Canonical"

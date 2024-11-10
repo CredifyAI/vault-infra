@@ -16,6 +16,10 @@ runcmd:
   - apt update -y
   - sudo apt-get install -y certbot python3-certbot vault
   - certbot certonly --standalone -d vault.lokesh.cloud --non-interactive --agree-tos -m chlokesh1306@gmail.com --pre-hook "systemctl stop vault" --post-hook "systemctl start vault && cp /etc/letsencrypt/live/vault.lokesh.cloud/fullchain.pem /opt/vault/tls/tls.crt && cp /etc/letsencrypt/live/vault.lokesh.cloud/privkey.pem /opt/vault/tls/tls.key"
+  - sudo echo "VAULT_ADDR=https://vault.lokesh.cloud:8200" > /root/.bashrc
+  - sudo echo "VAULT_ADDR=https://vault.lokesh.cloud:8200" > /home/vault/.bashrc
+  - sudo export VAULT_ADDR=https://vault.lokesh.cloud:8200
   - systemctl enable vault
   - systemctl start vault
+  - systemctl restart vault
   - systemctl status vault
